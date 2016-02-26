@@ -6,7 +6,7 @@
     Kukaan ei vastuussa!
 <% else %>
     <% @guardianships.each do |g| %>
-        <p><%= g.user.email %>  <%= g.created_at %></p>
+        <p><%= g.user.name%>  <%= g.created_at %></p>
     <% end %>
 <% end %>
 <br>

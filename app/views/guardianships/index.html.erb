@@ -3,10 +3,14 @@
 <h1>Tämänhetkiset vastuut:</h1>
 
 <% if @guardianships.empty? %>
-    Kukaan ei vastuussa!
+    Kukaan ei ole vastuussa!
 <% else %>
     <% @guardianships.each do |g| %>
-        <p><%= g.user.name%>  <%= g.created_at %></p>
+        <% if g.user.nil? || g.user.name.nil? %>
+            <p>Käyttäjä ei tiedossa, vastuu otettu <%= g.created_at %></p>
+        <% else %>
+            <p><%= g.user.name%>  <%= g.created_at %></p>
+        <% end %>
     <% end %>
 <% end %>
 <br>

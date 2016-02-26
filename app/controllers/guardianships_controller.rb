@@ -10,6 +10,7 @@ class GuardianshipsController < ApplicationController
   # GET /guardianships/1
   # GET /guardianships/1.json
   def show
+
   end
 
   # GET /guardianships/new

@@ -13,9 +13,9 @@
 
   <div class="field">
     <%= f.label 'Viesti' %><br>
-    <%= f.text_field :description_text%>
+    <%= f.text_area :description_text, cols: "30", rows: "10"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Liity vastuuseen"%>-
   </div>
 <% end %>

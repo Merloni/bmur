@@ -1,0 +1,21 @@
+<%= form_for(@guardianship) do |f| %>
+  <% if @guardianship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guardianship.errors.count, "error") %> prohibited this guardianship from being saved:</h2>
+
+      <ul>
+      <% @guardianship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Viesti' %><br>
+    <%= f.text_field :description_text%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

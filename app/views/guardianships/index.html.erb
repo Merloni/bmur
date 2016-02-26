@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tämänhetkiset vastuut:</h1>
+
+<% if @guardianships.empty? %>
+    Kukaan ei vastuussa!
+<% else %>
+    <% @guardianships.each do |g| %>
+        <p><%= g.user.email %>  <%= g.created_at %></p>
+    <% end %>
+<% end %>
+<br>
+
+<%= link_to 'Liity vastuuseen', new_guardianship_path %>

@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 <h1>Tämänhetkiset vastuut:</h1>
 
@@ -9,10 +10,14 @@
         <% if g.user.nil? || g.user.name.nil? %>
             <p>Käyttäjä ei tiedossa, vastuu otettu <%= g.created_at %></p>
         <% else %>
-            <p><%= g.user.name%>  <%= g.created_at %></p>
+            <p><%= g.user.name %>  <%= g.created_at %></p>
         <% end %>
     <% end %>
 <% end %>
 <br>
-
-<%= link_to 'Liity vastuuseen', new_guardianship_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Liity vastuuseen', new_guardianship_path %>
+<% end %>
+<% if @user_guardianship %>
+  <%= link_to 'Poistu vastuusta', end_guardianship_path(@user_guardianship.id) %>
+<% end %>

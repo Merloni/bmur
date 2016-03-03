@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: 'registrations' }
+
+
   resources :organizations
   resources :guardianships
-  resources :users
 
+  root to: 'guardianships#index'
 
-  root 'guardianships#index'
+  get 'guardianships/:id/end' => 'guardianships#end', as: :end_guardianship
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

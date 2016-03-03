@@ -20,6 +20,7 @@ class GuardianshipsController < ApplicationController
   def new
     if user_signed_in?
       @guardianship = Guardianship.new
+
     else
       redirect_to new_user_session_path
     end

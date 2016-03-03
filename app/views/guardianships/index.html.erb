@@ -7,17 +7,21 @@
     Kukaan ei ole vastuussa!
 <% else %>
     <% @guardianships.each do |g| %>
-        <% if g.user.nil? || g.user.name.nil? %>
-            <p>Käyttäjä ei tiedossa, vastuu otettu <%= g.created_at %></p>
-        <% else %>
-            <p><%= g.user.name %>  <%= g.created_at %></p>
-        <% end %>
+        <p><%= g.user.name %> on vastuussa:
+          <% if not g.description_text.nil? %>
+              <%= g.description_text %><br>
+          <% end %>
+          vastuu alkoi
+          <%= g.created_at.strftime("%H:%M") %></p>
     <% end %>
 <% end %>
 <br>
-<% if user_signed_in? %>
-  <%= link_to 'Liity vastuuseen', new_guardianship_path %>
+<% if user_signed_in? && @user_guardianship == nil %>
+    <%= link_to 'Liity vastuuseen', new_guardianship_path %>
 <% end %>
 <% if @user_guardianship %>
-  <%= link_to 'Poistu vastuusta', end_guardianship_path(@user_guardianship.id) %>
+
+    <%= text_area(:guardianship, :leave_text) %><br>
+    <%= link_to 'Poistu vastuusta', end_guardianship_path(@user_guardianship.id) %>
+
 <% end %>
